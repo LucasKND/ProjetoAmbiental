@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oceano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <canvas id="ocean"></canvas>
+    
+    <section id="comparison-section">
+        <h1>COMPARAÇÃO DE PLÁSTICOS</h1>
+        
+        <div class="table-container">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th class="topic-column"></th>
+                        <th class="eco-column">♻️ PLÁSTICO COMUM</th>
+                        <th class="harmful-column">🛢️ PLÁSTICO DE PETRÓLEO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="topic"><strong>Origem</strong></td>
+                        <td class="eco-data">Fontes renováveis (plantas, algas)</td>
+                        <td class="harmful-data">Petróleo (não renovável)</td>
+                    </tr>
+                    <tr>
+                        <td class="topic"><strong>Decomposição</strong></td>
+                        <td class="eco-data">6 meses a 2 anos</td>
+                        <td class="harmful-data">400 a 1000 anos</td>
+                    </tr>
+                    <tr>
+                        <td class="topic"><strong>Impacto Ambiental</strong></td>
+                        <td class="eco-data">Baixo - biodegradável</td>
+                        <td class="harmful-data">Alto - poluição permanente</td>
+                    </tr>
+                    <tr>
+                        <td class="topic"><strong>Toxicidade</strong></td>
+                        <td class="eco-data">Não tóxico</td>
+                        <td class="harmful-data">Libera microplásticos tóxicos</td>
+                    </tr>
+                    <tr>
+                        <td class="topic"><strong>Custo</strong></td>
+                        <td class="eco-data">Maior produção inicial</td>
+                        <td class="harmful-data">Mais barato (subsidiado)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="final-message">
+            <p>🌍 Escolha consciente, planeta sustentável!</p>
+        </div>
+    </section>
+    
+    <section id="quiz-section">
+        <h1>🧠 TESTE SEU CONHECIMENTO</h1>
+        <p class="quiz-subtitle">Responda as perguntas baseadas na comparação acima!</p>
+        
+        <div class="quiz-container">
+            <div class="question-card" data-question="1">
+                <h3>Pergunta 1</h3>
+                <p class="question-text">Quanto tempo o plástico de petróleo leva para se decomor?</p>
+                <div class="options">
+                    <button class="option" data-correct="false">6 meses a 2 anos</button>
+                    <button class="option" data-correct="false">Nunca se decompõe</button>
+                    <button class="option" data-correct="false">50 a 100 anos</button>
+                    <button class="option" data-correct="true">400 a 1000 anos</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+            
+            <div class="question-card" data-question="2">
+                <h3>Pergunta 2</h3>
+                <p class="question-text">De onde vem o plástico comum (biodegradável)?</p>
+                <div class="options">
+                    <button class="option" data-correct="false">Petróleo</button>
+                    <button class="option" data-correct="true">Fontes renováveis (plantas, algas)</button>
+                    <button class="option" data-correct="false">Minerais</button>
+                    <button class="option" data-correct="false">Reciclagem</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+            
+            <div class="question-card" data-question="3">
+                <h3>Pergunta 3</h3>
+                <p class="question-text">Qual é o impacto ambiental do plástico comum?</p>
+                <div class="options">
+                    <button class="option" data-correct="false">Alto - poluição permanente</button>
+                    <button class="option" data-correct="true">Baixo - biodegradável</button>
+                    <button class="option" data-correct="false">Médio - reciclável</button>
+                    <button class="option" data-correct="false">Nenhum impacto</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+            
+            <div class="question-card" data-question="4">
+                <h3>Pergunta 4</h3>
+                <p class="question-text">O que o plástico de petróleo libera no ambiente?</p>
+                <div class="options">
+                    <button class="option" data-correct="false">Oxigênio</button>
+                    <button class="option" data-correct="false">Água limpa</button>
+                    <button class="option" data-correct="true">Microplásticos tóxicos</button>
+                    <button class="option" data-correct="false">Nutrientes</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+            
+            <div class="question-card" data-question="5">
+                <h3>Pergunta 5</h3>
+                <p class="question-text">Quanto tempo o plástico comum leva para se decompor?</p>
+                <div class="options">
+                    <button class="option" data-correct="true">6 meses a 2 anos</button>
+                    <button class="option" data-correct="false">400 a 1000 anos</button>
+                    <button class="option" data-correct="false">10 a 20 anos</button>
+                    <button class="option" data-correct="false">1 semana</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="quiz-result">
+            <h2>Seu resultado: <span id="score">0</span>/5</h2>
+            <p id="result-message"></p>
+            <button id="reset-quiz">🔄 Tentar Novamente</button>
+        </div>
+    </section>
+    
+    <script src="index.js"></script>
+</body>
+</html>
