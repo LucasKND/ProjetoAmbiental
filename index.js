@@ -105,7 +105,7 @@ class Trash {
         if (!this.collected && this.y >= WATER_LINE - 30 && Math.abs(this.x - personX) < 60) {
             this.collected = true;
             trashBinCount++; // Aumentar contador de lixo coletado
-            // NÃO diminui poluição ao coletar - mar não limpa mais
+            pollution = Math.max(0, pollution - 8); // Diminui poluição ao coletar lixo
             createCollectionParticles(this.x, this.y);
         }
     }
@@ -1222,90 +1222,3 @@ function animate() {
 
 // Iniciar
 animate();
-
-// Quiz functionality
-let quizScore = 0;
-let questionsAnswered = 0;
-const totalQuestions = 5;
-
-document.querySelectorAll('.option').forEach(button => {
-    button.addEventListener('click', function() {
-        const card = this.closest('.question-card');
-        const options = card.querySelectorAll('.option');
-        const feedback = card.querySelector('.feedback');
-        const isCorrect = this.dataset.correct === 'true';
-        
-        // Desabilitar todos os botões da pergunta
-        options.forEach(opt => opt.disabled = true);
-        
-        // Marcar resposta correta e incorreta
-        if (isCorrect) {
-            this.classList.add('correct');
-            feedback.textContent = '✓ Correto! Muito bem!';
-            feedback.className = 'feedback show correct';
-            quizScore++;
-        } else {
-            this.classList.add('wrong');
-            // Mostrar qual era a correta
-            options.forEach(opt => {
-                if (opt.dataset.correct === 'true') {
-                    opt.classList.add('correct');
-                }
-            });
-            feedback.textContent = '✗ Incorreto. Veja a resposta correta destacada.';
-            feedback.className = 'feedback show wrong';
-        }
-        
-        questionsAnswered++;
-        
-        // Mostrar resultado final quando todas as perguntas forem respondidas
-        if (questionsAnswered === totalQuestions) {
-            setTimeout(showResult, 1000);
-        }
-    });
-});
-
-function showResult() {
-    const resultSection = document.querySelector('.quiz-result');
-    const scoreSpan = document.getElementById('score');
-    const messageP = document.getElementById('result-message');
-    
-    scoreSpan.textContent = quizScore;
-    
-    if (quizScore === 5) {
-        messageP.textContent = '🎉 Perfeito! Você é um expert em plásticos sustentáveis!';
-    } else if (quizScore >= 3) {
-        messageP.textContent = '👏 Muito bom! Você entende bem sobre o assunto!';
-    } else {
-        messageP.textContent = '📚 Continue aprendendo! Revise a tabela acima.';
-    }
-    
-    resultSection.classList.add('show');
-    resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-document.getElementById('reset-quiz').addEventListener('click', function() {
-    // Resetar pontuação
-    quizScore = 0;
-    questionsAnswered = 0;
-    
-    // Resetar todas as perguntas
-    document.querySelectorAll('.question-card').forEach(card => {
-        const options = card.querySelectorAll('.option');
-        const feedback = card.querySelector('.feedback');
-        
-        options.forEach(opt => {
-            opt.disabled = false;
-            opt.classList.remove('correct', 'wrong');
-        });
-        
-        feedback.className = 'feedback';
-        feedback.textContent = '';
-    });
-    
-    // Esconder resultado
-    document.querySelector('.quiz-result').classList.remove('show');
-    
-    // Scroll para o início do quiz
-    document.getElementById('quiz-section').scrollIntoView({ behavior: 'smooth' });
-});
