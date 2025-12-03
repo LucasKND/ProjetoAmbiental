@@ -4,13 +4,23 @@ const ctx = canvas.getContext('2d');
 
 // Constantes - Perspectiva de cima: horizonte mais alto
 const HORIZON_RATIO = 0.30; // Horizonte aos 30% da tela (mar mais baixo)
-const BEACH_RATIO = 0.25; // Praia ocupa 25% da parte inferior
+let BEACH_RATIO = 0.25; // Praia ocupa 25% da parte inferior
 let WATER_LINE;
 
 // Ajustar canvas para tela
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    
+    // Ajustar proporção da praia baseado no tamanho da tela
+    if (window.innerWidth <= 768) {
+        // Mobile: praia mais alta (menos área)
+        BEACH_RATIO = 0.20;
+    } else {
+        // Desktop: proporção normal
+        BEACH_RATIO = 0.25;
+    }
+    
     WATER_LINE = canvas.height * (1 - BEACH_RATIO);
 }
 resizeCanvas();
